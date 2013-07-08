@@ -51,7 +51,7 @@ class ZpZgSystemRSMembershipZarinpal extends JPlugin
 
         $result = $this->send($desc,$api,$amount,$redirect);
         if($result->Status == 100 ){
-            $go =  "https://wwww.zarinpal.com/pg/StartPay/" . $result->Authority . "/ZarinGate";
+            $go =  "https://www.zarinpal.com/pg/StartPay/" . $result->Authority . "/ZarinGate";
             $transaction->custom = $result;
             $html = 'در حال وصل شدن به درگاه...<META http-equiv="refresh" content="3;URL='.$go.'">';
         }else{
