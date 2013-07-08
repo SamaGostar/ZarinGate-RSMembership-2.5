@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="2.5" type="plugin" group="system" method="upgrade">
+	<name>  پرداخت آنلاین زرین پال - زرین گیت</name>
+	<author>Zarinpal developement team</author>
+	<creationDate>March 2013</creationDate>
+	<copyright>Copyright (C) 2013 Zarinpal.com. All rights reserved.</copyright>
+	<license>GPLv2.0</license>
+	<authorEmail>m.amini@samansystems.com</authorEmail>
+	<authorUrl>www.zarinpal.com</authorUrl>
+	<version>1.0.0</version>
+	<description>پلاگين پرداخت Zarinpal</description>
+	<files>
+		<filename plugin="rsmembershipzarinpalzg">rsmembershipzarinpalzg.php</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.plg_system_rsmembershipzarinpalzg.ini</language>
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="api"  type="text" default="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX" label="API" description="مرچند کد خود را وارد کنید" />
+            </fieldset>
+        </fields>
+    </config>
+</install>
