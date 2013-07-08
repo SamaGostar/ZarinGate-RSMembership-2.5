@@ -32,7 +32,7 @@ class ZpZgSystemRSMembershipZarinpal extends JPlugin
 	}
     public function onAfterRender()
     {
-        if(isset($_GET['Authority'])){
+        if($_GET['Status'] == "OK"){
             $this->onPaymentNotification();
         }
     }
@@ -51,7 +51,7 @@ class ZpZgSystemRSMembershipZarinpal extends JPlugin
 
         $result = $this->send($desc,$api,$amount,$redirect);
         if($result->Status == 100 ){
-            $go =  "https://wwww.zarinpal.com/pg/Transactions/StartPay/" . $result->Authority . "/ZarinGate";
+            $go =  "https://wwww.zarinpal.com/pg/StartPay/" . $result->Authority . "/ZarinGate";
             $transaction->custom = $result;
             $html = 'در حال وصل شدن به درگاه...<META http-equiv="refresh" content="3;URL='.$go.'">';
         }else{
@@ -73,19 +73,14 @@ class ZpZgSystemRSMembershipZarinpal extends JPlugin
             $status = $_GET['Status'];
 			$au = $_GET['Authority'];
 			$amount = $transaction->price;
-			if($status == "OK"){
+			
 				$result = $this->get($api,$au,$amount);
 				$database->setQuery( "SELECT * FROM #__rsmembership_transactions WHERE `custom`='".$au."' AND `status`!='1' AND `gateway`='دروازه پرداخت Zarinpal'" );
 				$transaction = $database->loadObject( );
 				if ( empty( $transaction ) )
 				{
 					echo 'اطلاعاتي در رباطه با درخواست شما يافت نشد';
-				}
-			}else{
-				echo "پرداخت توسط کاربر لغو شده است";
-			}
-
-            else
+				}else
             {
 
                 if($result == 100){
