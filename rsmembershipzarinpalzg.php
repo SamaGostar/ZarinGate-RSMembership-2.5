@@ -55,7 +55,7 @@ class ZpZgSystemRSMembershipZarinpal extends JPlugin
             $transaction->custom = $result;
             $html = 'در حال وصل شدن به درگاه...<META http-equiv="refresh" content="3;URL='.$go.'">';
         }else{
-            $html = "در ارتباط با درگاه خطايي به وجود آمد : $result";
+            $html = "در ارتباط با درگاه خطايي به وجود آمد : $result->Status";
         }
 
 		return $html;
@@ -83,13 +83,13 @@ class ZpZgSystemRSMembershipZarinpal extends JPlugin
 				}else
             {
 
-                if($result == 100){
+                if($result->Status == 100){
                     RSMembership::approve($transaction->id);
                     $database->setQuery( "UPDATE #__rsmembership_transactions SET `hash`='".$refid."' WHERE `id`='".$transaction->id."' LIMIT 1" );
                     $database->query();
                     echo 'پرداخت شما با موفقيت صورت گرفت';
                 }else{
-                    echo "مشکلي در پرداخت شما صورت گرفت ، شماره خطا: $result";
+                    echo "مشکلي در پرداخت شما صورت گرفت ، شماره خطا: $result->Status";
                 }
             }
 
