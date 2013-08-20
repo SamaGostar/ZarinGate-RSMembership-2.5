@@ -83,13 +83,13 @@ class ZpZgSystemRSMembershipZarinpal extends JPlugin
 				}else
             {
 
-                if($result->Status == 100){
+                if($result == 100){
                     RSMembership::approve($transaction->id);
                     $database->setQuery( "UPDATE #__rsmembership_transactions SET `hash`='".$refid."' WHERE `id`='".$transaction->id."' LIMIT 1" );
                     $database->query();
                     echo 'پرداخت شما با موفقيت صورت گرفت';
                 }else{
-                    echo "مشکلي در پرداخت شما صورت گرفت ، شماره خطا: $result->Status";
+                    echo "مشکلي در پرداخت شما صورت گرفت ، شماره خطا: $result";
                 }
             }
 
