@@ -43,7 +43,7 @@ class ZpZgSystemRSMembershipZarinpal extends JPlugin
 		if ($plugin != $this->_plugin->name) return false;
     
         
-        $desc = $transaction->id ;
+        $desc = 'پرداخت مربوط به کاربر : ' . $transaction->user_email;
     	$api = $this->_params->get('api');
         $amount = $transaction->price;
 
